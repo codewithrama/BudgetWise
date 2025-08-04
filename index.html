@@ -18,16 +18,17 @@
 
     <section class="currency-dropdown">
       <label for="currency">Currency:</label>
-      <select id="currency" class="currency">
-        <option value="USD">us USD - US Dollar</option>
-        <option value="EUR">eu EUR - Euro</option>
-        <option value="GBP">gbp GBP - British Pound</option>
-        <option value="JPY">jp JPY - Japanese Yen</option>
-        <option value="AUD">au AUD - Australian Dollar</option>
-        <option value="CAD">ca CAD - Canadian Dollar</option>
-        <option value="CHF">ch CHF - Swiss Franc</option>
-        <option value="CNY">cn CNY - Chinese Yuan</option>
-        <option value="INR">in INR - Indian Rupee</option>
+      <select id="currency" required>
+        <option value="" disabled selected>Select Currency Value</option>
+        <option value="USD,$">us USD - US Dollar</option>
+        <option value="EUR,€">eu EUR - Euro</option>
+        <option value="GBP,£">gbp GBP - British Pound</option>
+        <option value="JPY,¥">jp JPY - Japanese Yen</option>
+        <option value="AUD,A$">au AUD - Australian Dollar</option>
+        <option value="CAD,C$">ca CAD - Canadian Dollar</option>
+        <option value="CHF,CHF">ch CHF - Swiss Franc</option>
+        <option value="CNY,¥">cn CNY - Chinese Yuan</option>
+        <option value="INR,₹">in INR - Indian Rupee</option>
       </select>
     </section>
 
@@ -76,45 +77,39 @@
         </div>
         <div class="form-type">
           <label for="type">Type</label>
-          <select id="type">
+          <select id="type" required>
+            <option value="" disabled selected>Select Type</option>
             <option value="income">Income</option>
             <option value="expense">Expense</option>
           </select>
         </div>
 
-        <button type="submit" class="btn-add">Add Transaction</button>
+        <button type="button" class="btn-add">Add Transaction</button>
       </form>
     </section>
 
     <section class="transaction-list">
-      <div class="heading">
-        <div class="transaction--heading">
-          <h3>Recent Transaction</h3>
-        </div>
-        <div class="btn-clear">
-          <p class="clearall"> Clear All</p>
-        </div>
+      <!-- Title and Clear All (OUTSIDE the card) -->
+      <div class="header-row">
+        <h3>Recent Transactions</h3>
+        <button class="clear-all">Clear All</button>
       </div>
 
+      <!-- Transactions Card (Just the list) -->
       <div class="transaction--row--container">
-        <div class="transaction--row">
-          <div class="transaction--info">
-            <span class="transaction--emoji">💰</span>
-            <div class="transaction--text">
-              <p class="transaction--description">3</p>
-              <p class="transaction--date">7/31/2025</p>
-            </div>
-          </div>
+        <!-- Transaction items will be dynamically inserted here -->
 
-          <div class="transaction--actions">
-            <p class="transaction-value">+3.00</p>
-            <button class="btn-delete">Delete</button>
-          </div>
-        </div>
       </div>
 
 
+    </section>
+
+
+    </div>
   </main>
+
+  <script src="app.js"></script>
+
 </body>
 
 </html>

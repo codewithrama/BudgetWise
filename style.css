@@ -68,12 +68,14 @@ body {
   border-left: 5px solid #4085f5;
 }
 
-.incomevalue {
+.incomevalue,
+.income--amount {
   color: #28c76f;
   font-weight: bold;
 }
 
-.expensevalue {
+.expensevalue,
+.expense--amount {
   color: #f04343;
   font-weight: bold;
 }
@@ -144,6 +146,7 @@ input,
   border-radius: 16px;
   width: 60%;
   margin-left: 20%;
+
 }
 
 .heading {
@@ -175,33 +178,96 @@ input,
 
 /*transactional row */
 
-.transaction--row {
+.header-row {
   display: flex;
-  background-color: #ffffff;
-  padding: 20px;
-  border: 2px solid #e5e7eb;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
-  border-radius: 16px;
-  margin-top: 10px;
   justify-content: space-between;
+  align-items: center;
+  max-width: 600px;
+  margin: auto;
+  margin-bottom: 8px;
 }
 
-.transaction--type {
-  font-size: 20px;
+.header-row h3 {
+  margin: 0;
+  font-size: 18px;
 }
 
-.container {
+.clear-all {
+  background: none;
+  border: none;
+  color: red;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* Transactions Box */
+
+.transaction--row--container {
   display: flex;
+  flex-direction: column;
+  gap: 12px;
+  /* spacing between transaction items */
+  margin-top: 10px;
 }
 
-.btn-delete {
+.transactions-card {
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  padding: 20px;
+  width: 100%;
+  border: 1px solid #4c5663;
+  max-width: 600px;
+  margin: auto;
+}
+
+/* Transaction Entry */
+.transaction-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f9f9f9;
+  padding: 12px 15px;
+  border-radius: 8px;
+}
+
+.transaction-left {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  font-size: 22px;
+  margin-right: 10px;
+}
+
+.transaction-text .description {
+  font-weight: bold;
+}
+
+.transaction-text .date {
+  font-size: 13px;
+  color: #777;
+}
+
+.transaction-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.delete {
+  background: none;
   border: none;
   color: #f04343;
-  background-color: transparent;
-  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
 }
 
-.transaction-value {
-  font-weight: bold;
-  color: #28c76f;
+.footer {
+  background-color: #ffffff;
+  padding: 4px;
+  text-align: center;
+  border-top: 1px solid #e5e7eb;
+  bottom: 0;
 }
