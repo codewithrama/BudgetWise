@@ -271,3 +271,148 @@ input,
   border-top: 1px solid #e5e7eb;
   bottom: 0;
 }
+
+
+@media screen and (max-width: 768px) {
+  .currency-dropdown {
+    width: 90%;
+    margin: 20px auto;
+    padding: 20px;
+  }
+
+  .badges-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .badges {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .form-container {
+    width: 90%;
+    margin: 20px auto;
+    padding: 30px 20px;
+  }
+
+  .add--transactionform {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .add--transactionform input,
+  #type {
+    width: 100%;
+  }
+
+  .btn-add {
+    width: 100%;
+    padding: 12px;
+  }
+
+  .transaction-list {
+    width: 90%;
+    margin: 20px auto;
+    padding: 30px 20px;
+  }
+
+  .transaction-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .transaction-right {
+    align-self: flex-end;
+  }
+
+  .transaction--row--container,
+  .transactions-card {
+    width: 100%;
+    padding: 15px;
+  }
+
+  .transaction-text .description {
+    font-size: 16px;
+  }
+
+  .transaction-text .date {
+    font-size: 12px;
+  }
+
+  .head h3 {
+    font-size: 28px;
+  }
+
+  .head p {
+    font-size: 16px;
+  }
+}
+
+
+/* For mobile devices (up to 768px wide) */
+@media (max-width: 768px) {
+
+  .currency-dropdown,
+  .form-container,
+  .transaction-list {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+  }
+
+  .badges-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .badges {
+    width: 90%;
+    padding: 10px;
+  }
+
+  .add--transactionform {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  input,
+  #type {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  .btn-add {
+    width: 100%;
+  }
+
+  .transaction-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .transaction-right {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+/* For large screens (above 1440px or 16-inch displays) */
+@media (min-width: 1440px) {
+
+  .currency-dropdown,
+  .form-container,
+  .transaction-list {
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .transaction--row--container {
+    max-width: 1000px;
+    margin: auto;
+  }
+}

@@ -11,15 +11,22 @@ const container = document.querySelector(".transaction--row--container");
 const totalIncome = document.querySelector(".incomevalue");
 const totalExpense = document.querySelector(".expensevalue");
 const totalbalance = document.querySelector(".balancevalue");
-
+const clearall = document.querySelector(".clear-all");
 //creating variables
 let type;
-const transactionsarr = [];
+let transactionsarr = [];
 let incometotal = 0;
 let balancetotal = 0;
 let expensetotal = 0;
 let curr = "";
+let budgetincome = 0;
 //array
+
+//hiding expense initially
+
+if (budgetincome === 0) {
+  document.querySelector(".hide").disabled = true;
+}
 
 //Getting Currency Value and setting dynamically in ui
 selectedCurrency.addEventListener("change", function () {
@@ -64,7 +71,7 @@ const renderTransactionlist = function (transactionsarr) {
       <span class="${transactionsarr[i].type}--amount">
         ${transactionsarr[i].tAmount}
       </span>
-      <button class="delete">Delete</button>
+      <button class="delete" data-id="${transactionsarr[i].id}">Delete</button>
     </div>
   </div>
 `;
@@ -91,6 +98,8 @@ const badgeDisplay = function (transactionsarr) {
     incometotal - Math.abs(expensetotal)
   )}`;
 
+  budgetincome = incometotal;
+
   incometotal = 0;
   expensetotal = 0;
 };
@@ -103,24 +112,57 @@ addTranscationAmonut.addEventListener("click", function () {
     transcationAmount.value !== "" &&
     typeOfTransaction.value !== ""
   ) {
-    const currentDate = new Date()
-      .toLocaleDateString("en-GB")
-      .replaceAll(" ", "/ ");
-    const transaction = {
-      tDescription: transactionDescription.value,
-      type: type,
-      tAmount: `${type === "income" ? "+" : "-"}` + transcationAmount.value,
-      tdate: currentDate,
-    };
+    if (selectedCurrency.value !== "") {
+      const currentDate = new Date()
+        .toLocaleDateString("en-GB")
+        .replaceAll(" ", "/ ");
+      const transaction = {
+        id: Date.now(),
+        tDescription: transactionDescription.value,
+        type: type,
+        tAmount: `${type === "income" ? "+" : "-"}` + transcationAmount.value,
+        tdate: currentDate,
+      };
 
-    transactionsarr.push(transaction);
+      transactionsarr.push(transaction);
+      renderTransactionlist(transactionsarr);
+      badgeDisplay(transactionsarr);
+
+      transactionDescription.value = "";
+      transcationAmount.value = "";
+      typeOfTransaction.value = "";
+      document.querySelector(".hide").disabled = false;
+    } else {
+      alert("Please Select Currency ");
+    }
+  } else {
+    alert("Please enter Transaction Details");
+  }
+});
+
+//clear all functionality
+
+clearall.addEventListener("click", function () {
+  transactionsarr = [];
+  container.innerHTML = "";
+  document.querySelector(".hide").disabled = true;
+  badgeDisplay(transactionsarr);
+  selectedCurrency.value = "";
+});
+
+//delete icon functionality
+
+container.addEventListener("click", function (e) {
+  if (e.target.classList.contains("delete")) {
+    const idToDelete = Number(e.target.dataset.id);
+    transactionsarr = transactionsarr.filter(
+      (trans) => trans.id !== idToDelete
+    );
     renderTransactionlist(transactionsarr);
     badgeDisplay(transactionsarr);
 
-    transactionDescription.value = "";
-    transcationAmount.value = "";
-    typeOfTransaction.value = "";
-  } else {
-    alert("Please enter Transaction Details");
+    if (transactionsarr.length === 0) {
+      document.querySelector(".hide").disabled = true;
+    }
   }
 });
