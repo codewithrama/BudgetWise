@@ -148,6 +148,7 @@ clearall.addEventListener("click", function () {
   document.querySelector(".hide").disabled = true;
   badgeDisplay(transactionsarr);
   selectedCurrency.value = "";
+  location.reload();
 });
 
 //delete icon functionality
